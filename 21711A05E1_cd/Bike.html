@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <title>Document</title>
+    <style>
+        .header {
+        display: flex;
+        background-color: black;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 20px;
+        }
+
+        .header img {
+            max-height: 50px;
+        }
+
+        .side {
+            display: flex;
+            align-items: center;
+        }
+
+        .side div {
+            margin-right: 25px;
+        }
+
+        .side a {
+            text-decoration: none;
+            color: white;
+            display: flex;
+            align-items: center;
+        }
+
+        .icon {
+            margin-right: 5px;
+        }
+
+        .header a {
+            text-decoration: none;
+            color: white;
+        }
+
+        .header-links {
+            display: flex;
+            justify-content: flex-end; 
+        }
+
+        .header-link {
+            margin-left: 10px; 
+        }
+
+        .header p {
+            margin: 5px;
+            padding: 5px;
+            cursor: pointer;
+        }
+        h2,
+        p {
+            margin-left: 20px;
+            text-align: center;
+        }
+
+        .icon {
+            padding: 5px;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+    
+        .container {
+            display: flex;
+            height: 100vh;
+            width: 100%;
+        }
+    
+        .left-menu {
+            width: 30%;
+            background-color: #5c3d8e;
+            color: #fff;
+            padding: 20px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            gap: 20px;
+        }
+    
+        .menu-item {
+            padding: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+    
+        .menu-item:hover {
+            background-color: #4b2f6c;
+        }
+    
+        .booking-options {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+    
+        .options {
+            display: flex;
+            justify-content: space-around;
+        }
+    
+        .option {
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            background-color: #fff;
+            color: #5c3d8e;
+            transition: background-color 0.3s, color 0.3s;
+        }
+    
+        .option:hover {
+            background-color: #e0d2f0;
+        }
+    
+        .location-search {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+    
+        .location-search input, .location-search button {
+            padding: 10px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            width: calc(100% - 24px);
+            margin: 0 12px;
+            box-sizing: border-box;
+        }
+    
+        .location-search button {
+            background-color: #5c3d8e;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+    
+        .location-search button:hover {
+            background-color: #4b2f6c;
+            transform: scale(1.05);
+        }
+    
+        .location-search button:active {
+            background-color: #3a2259;
+            transform: scale(1);
+        }
+    
+        .right-content {
+            width: 70%;
+            background-color: #f5f5f5;
+            padding: 20px;
+            box-sizing: border-box;
+            overflow-y: auto;
+        }
+    
+        .ride-options {
+            display: none;
+        }
+    
+        .ride-options.active {
+            display: block;
+        }
+    
+        .ride-option {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 16px;
+            border-radius: 8px;
+            background-color: #fff;
+            margin-bottom: 16px;
+            transition: background-color 0.3s;
+            justify-content: space-between;
+        }
+    
+        .ride-option:hover {
+            background-color: #e0d2f0;
+        }
+    
+        .ride-option img {
+            width: 150px;
+            height: 100px;
+            border-radius: 8px;
+        }
+    
+        .ride-option .ride-info {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+    
+        .ride-option .ride-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+        }
+    
+        .ride-option .ride-cost {
+            font-size: 1rem;
+            color: #333;
+        }
+    
+        .ride-option .book-now {
+            padding: 8px 12px;
+            background-color: #5c3d8e;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+    
+        .ride-option .book-now:hover {
+            background-color: #4b2f6c;
+        }
+        </style>
+</head>
+<body>
+    <header>
+        <div class="header">
+            <img src="white.png" alt="Travel App Logo">
+            <div class="side">
+                <div>
+                    <a href="electric-bike.html"><i class="fa-solid fa-bolt icon"></i>Electric-Bike</a>
+                </div>
+                <div>
+                    <a href="bike.html"><i class="fa-solid fa-motorcycle icon"></i>Bike</a>
+                </div>
+                <div>
+                    <a href="book-cab.html"><i class="fa-solid fa-car icon"></i>Book a Cab</a>
+                </div>
+                <div>
+                    <a href="bookings.html"><i class="fa-solid fa-car-side icon"></i>Bookings</a>
+                </div>
+                <div>
+                    <a href="logout.php"><i class="fa-solid fa-sign-out icon"></i>Logout</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="container">
+        <div class="left-menu">
+            <div class="booking-options">
+                <h2>Book Your Ride</h2>
+                <div class="options">
+                    <div class="option" onclick="selectOption('daily')">Daily Rides</div>
+                    <div class="option" onclick="selectOption('outstation')">Outstation</div>
+                    <div class="option" onclick="selectOption('rentals')">Rentals</div>
+                </div>
+                <div class="location-search">
+                    <input type="text" placeholder="From: Enter pickup location" id="fromLocation">
+                    <input type="text" placeholder="To: Enter drop location" id="toLocation">
+                    <input type="date" id="rideDate">
+                    <button onclick="searchRides()">Search Rides</button>
+                </div>
+            </div>
+        </div>
+        <div class="right-content" id="rideResults">
+            <!-- Ride options will be displayed here -->
+        </div>
+    </div>
+    <script>
+        let selectedOption = 'daily';
+    
+        function selectOption(option) {
+            selectedOption = option;
+            
+            var options = document.querySelectorAll('.option');
+            options.forEach(function(opt) {
+                if (opt.textContent.toLowerCase() === option) {
+                    opt.style.backgroundColor = '#e0d2f0';
+                    opt.style.color = '#5c3d8e';
+                } else {
+                    opt.style.backgroundColor = '#fff';
+                    opt.style.color = '#5c3d8e';
+                }
+            });
+        }
+    
+        function searchRides() {
+            var fromLocation = document.getElementById('fromLocation').value;
+            var toLocation = document.getElementById('toLocation').value;
+            var rideDate = document.getElementById('rideDate').value;
+    
+            var rideResults = document.getElementById('rideResults');
+            rideResults.innerHTML = '';
+    
+            var rideOptions = [
+                {
+                    title: 'MT',
+                    cost: '200/6h',
+                    image: 'bike 2.png',
+                    type: 'daily'
+                },
+                {
+                    title: 'V3',
+                    cost: '250/6h',
+                    image: 'bike 1.png',
+                    type: 'daily'
+                },
+                {
+                    title: 'RE',
+                    cost: '300/6h',
+                    image: 'bike.png',
+                    type: 'daily'
+                },
+                
+                {
+                    title: 'MT',
+                    cost: '1000/24h',
+                    image: 'bike 2.png',
+                    type: 'outstation'
+                },
+                {
+                    title: 'V3',
+                    cost: '1250/24h',
+                    image: 'bike 1.png',
+                    type: 'outstation'
+                },
+                {
+                    title: 'RE',
+                    cost: '1300/24h',
+                    image: 'bike.png',
+                    type: 'outstation'
+                },
+                
+                {
+                    title: 'MT',
+                    cost: '3500/week',
+                    image: 'bike 2.png',
+                    type: 'rentals'
+                },
+                {
+                    title: 'V3',
+                    cost: '3750/week',
+                    image: 'bike 1.png',
+                    type: 'rentals'
+                },
+                {
+                    title: 'RE',
+                    cost: '3600/week',
+                    image: 'bike.png',
+                    type: 'rentals'
+                },
+                
+            ];
+    
+            rideOptions.forEach(function(option) {
+                if (option.type === selectedOption) {
+                    var rideOptionDiv = document.createElement('div');
+                    rideOptionDiv.className = 'ride-option';
+                    rideOptionDiv.innerHTML = `
+                        <img src="${option.image}" alt="${option.title}">
+                        <div class="ride-info">
+                            <div class="ride-title">${option.title}</div>
+                            <div class="ride-cost">${option.cost}</div>
+                        </div>
+                        <button class="book-now" onclick="window.location.href='bookings.html'">Book Now</button>
+                    `;
+                    rideResults.appendChild(rideOptionDiv);
+                }
+            });
+        }
+    </script>
+</body>
+</html>
